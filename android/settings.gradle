@@ -1,0 +1,3 @@
+rootProject.name = 'inmotion_postcode'
+
+include ':app'
