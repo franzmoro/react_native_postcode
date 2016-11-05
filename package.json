@@ -21,8 +21,10 @@
     "babel-jest": "16.0.0",
     "babel-preset-react-native": "1.9.0",
     "eslint": "^3.9.1",
+    "eslint-plugin-flowtype": "^2.25.0",
     "eslint-plugin-react": "^6.5.0",
     "eslint-plugin-react-native": "^2.0.0",
+    "flow-bin": "^0.34.0",
     "jest": "16.0.2",
     "jest-react-native": "16.1.0",
     "react-test-renderer": "15.3.2"

@@ -2,6 +2,7 @@
   'parser': 'babel-eslint',
   'plugins': [
     'react',
+    'flowtype',
     'react-native'
   ],
   'env': {
@@ -53,7 +54,7 @@
     'no-alert': 0,
     'react-native/no-unused-styles': 2,
     # flow rules
-    # 'flowtype/require-parameter-type': 1,
+    'flowtype/require-parameter-type': 1,
     # 'flowtype/require-return-type': [1,'always',{
     #   'annotateUndefined': 'never'
     # }],
@@ -67,8 +68,8 @@
     '__DEV__': true
   },
   'settings': {
-    # 'flowtype': {
-    #   'onlyFilesWithFlowAnnotation': true
-    # }
+    'flowtype': {
+      'onlyFilesWithFlowAnnotation': true
+    }
   }
 }
