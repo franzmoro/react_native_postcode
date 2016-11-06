@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import {
   Image,
   View,
@@ -12,7 +12,7 @@ const Picker = require('./picker.js');
 const { width, height } = Dimensions.get('window');
 const { search: searchIcon } = require('../assets/_icons.js');
 
-module.exports = ({
+const FormInputComponent = ({
   changePostcodeInput,
   getAddresses,
   selectAddress,
@@ -65,6 +65,19 @@ module.exports = ({
     }
   </View>
 ;
+
+FormInputComponent.propTypes = {
+  changePostcodeInput: PropTypes.func.isRequired,
+  getAddresses: PropTypes.func.isRequired,
+  selectAddress: PropTypes.func.isRequired,
+  hidePicker: PropTypes.func.isRequired,
+  postcode: PropTypes.string.isRequired,
+  rawOptions: PropTypes.array,
+  selectedAddress: PropTypes.object,
+  shouldShowPicker: PropTypes.bool.isRequired,
+};
+
+module.exports = FormInputComponent;
 
 const styles = StyleSheet.create({
   form: {

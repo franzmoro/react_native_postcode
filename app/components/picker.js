@@ -1,39 +1,27 @@
-import React, { Component } from 'react';
-import {
-  Picker,
-  StyleSheet
-} from 'react-native';
+import React, { PropTypes } from 'react';
+import { Picker } from 'react-native';
 
 const { Item } = Picker;
 
-class PickerComponent extends Component {
-  constructor () {
-    super();
-  }
-  render () {
-    const {
-      selectAddress,
-      selectedAddress,
-      rawOptions
-    } = this.props;
+const PickerComponent = ({
+  selectAddress,
+  rawOptions
+}) =>
+  <Picker onValueChange = { selectAddress } >
+    {
+      rawOptions.map((address, idx) =>
+      <Item {...{
+        key: `picker-item-${idx}`,
+        label: address,
+        value: idx} }
+        />
+      )
+    }
+  </Picker>;
 
-    return (
-      <Picker
-        selectedValue = { selectedAddress }
-        onValueChange = { selectAddress }
-        >
-        {
-          rawOptions.map((address, idx) =>
-          <Item {...{
-            key: `picker-item-${idx}`,
-            label: address,
-            value: idx} }
-            />
-          )
-        }
-      </Picker>
-    );
-  }
-}
+PickerComponent.propTypes = {
+  selectAddress: PropTypes.func.isRequired,
+  rawOptions: PropTypes.array
+};
 
 module.exports = PickerComponent;
