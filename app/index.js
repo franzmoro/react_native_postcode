@@ -4,7 +4,7 @@ module.exports = ({ target }) => {
   const actions = require('./actions/index.js')({ reactModules });
   const reducers = require('./reducers/index.js');
 
-  const App = require('./containers/index.js');
+  const App = require('./containers/index.js')({ actions });
 
   const configureStore = require('./configure_store.js');
   const store = configureStore({ actions, reducers });

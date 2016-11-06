@@ -1,4 +1,3 @@
-/* @flow */
 'use strict';
 
 import thunk from 'redux-thunk';
@@ -9,14 +8,19 @@ const {
   loggerOptions: { active: isLogActive, ...loggerOptions }
 } = require('./dev_options.js');
 
+const emptyMiddleware = () => (next) => (action) => next(action);
+const loggerMiddleware = isLogActive
+  ? createLogger(loggerOptions)
+  : emptyMiddleware
+;
+
 module.exports = ({ actions, reducers }) => {
   const finalCreateStore = applyMiddleware(
     thunk,
-    isLogActive ? createLogger(loggerOptions) : () => () => {}
+    loggerMiddleware
   )(createStore);
 
   const store = finalCreateStore(reducers);
   // TODO dispatch a clear state action (TBC)
-  
   return store;
 };

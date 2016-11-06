@@ -1,33 +1,30 @@
-import React from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  Dimensions
-} from 'react-native';
+'use strict';
 
-const { width } = Dimensions.get('window');
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
-const RootContainer = () =>
-  <View style={styles.container}>
-    <Text style={styles.text}>
-      This app works for both iOS and Android!
-    </Text>
-  </View>
-;
+const { InputForm: InputFormComponent } = require('../components/index.js');
 
-module.exports = RootContainer;
+const mapStateToProps = state => {
+  const {
+    form: { postcode, address },
+    addresses: { options }
+  } = state.toJS();
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: 'column',
-    justifyContent: 'center'
-  },
-  text: {
-    width: 0.9 * width,
-    textAlign: 'center',
-    alignSelf: 'center',
-    fontSize: 20
+  return {
+    postcode,
+    selectedAddress: address,
+    addressOptions: options
+  };
+};
+
+module.exports = ({ actions }) => {
+  class InputContainer extends Component {
+    render () {
+      return (
+        <InputFormComponent { ...this.props } />
+      );
+    }
   }
-});
+  return connect(mapStateToProps, actions)(InputContainer);
+};
