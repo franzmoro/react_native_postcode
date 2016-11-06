@@ -5,16 +5,18 @@
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "jest",
-    "p:s": "npm cache clean && watchman watch-del-all &&git node_modules/react-native/packager/packager.sh --resetCache",
+    "p:s": "npm cache clean && watchman watch-del-all && node_modules/react-native/packager/packager.sh --resetCache",
     "o:ios": "open ios/inmotion_postcode.xcodeproj",
     "o:android": "open android/app/src/main/java/com/inmotion_postcode/MainActivity.java"
   },
   "dependencies": {
     "dotenv": "^2.0.0",
+    "immutable": "^3.8.1",
     "react": "15.3.2",
     "react-native": "^0.36.1",
     "react-redux": "^4.4.5",
     "redux": "^3.6.0",
+    "redux-immutable": "^3.0.8",
     "redux-thunk": "^2.1.0"
   },
   "jest": {
@@ -31,6 +33,7 @@
     "flow-bin": "^0.34.0",
     "jest": "16.0.2",
     "jest-react-native": "16.1.0",
-    "react-test-renderer": "15.3.2"
+    "react-test-renderer": "15.3.2",
+    "redux-logger": "^2.7.4"
   }
 }
