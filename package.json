@@ -10,7 +10,6 @@
     "o:android": "open android/app/src/main/java/com/inmotion_postcode/MainActivity.java"
   },
   "dependencies": {
-    "dotenv": "^2.0.0",
     "immutable": "^3.8.1",
     "react": "15.3.2",
     "react-native": "^0.36.1",
