@@ -7,7 +7,7 @@ const PickerComponent = ({
   selectAddress,
   rawOptions
 }) =>
-  <Picker onValueChange = { selectAddress } >
+  <Picker mode = 'dropdown' onValueChange = { selectAddress } >
     {
       rawOptions.map((address, idx) =>
       <Item {...{
