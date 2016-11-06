@@ -19,7 +19,8 @@ module.exports = ({
   postcode,
   rawOptions,
   selectedAddress,
-  showPicker
+  shouldShowPicker,
+  hidePicker
 }) =>
   <View style={ styles.form }>
     <View style={ styles.inputContainer }>
@@ -28,7 +29,9 @@ module.exports = ({
         autoCorrect: false,
         autoFocus: true,
         maxLength: 8,
+        underlineColorAndroid: 'transparent',
         onChangeText: changePostcodeInput,
+        onFocus: hidePicker,
         placeholder: 'UK POSTCODE',
         value: postcode,
         style: [ styles.textInput, styles.postcode ]
@@ -42,7 +45,11 @@ module.exports = ({
         </TouchableOpacity>
       }
     </View>
-    { showPicker && <Picker {...{ rawOptions, selectAddress }} />
+    {
+      shouldShowPicker &&
+      <View style = { styles.pickerContainer}>
+        <Picker {...{ rawOptions, selectAddress }} />
+      </View>
     }
     {
       Object.keys(selectedAddress).map(field =>
@@ -62,8 +69,9 @@ module.exports = ({
 const styles = StyleSheet.create({
   form: {
     flex: 1,
+    paddingTop: 0.1 * height,
     flexDirection: 'column',
-    justifyContent: 'center',
+    backgroundColor: '#b7b7b7'
   },
   inputContainer: {
     width: 0.9 * width,
@@ -71,14 +79,15 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     alignSelf: 'center',
     flexDirection: 'row',
-    marginTop: 0.01 * height
+    marginTop: 0.01 * height,
+    backgroundColor: '#e0e0e0'
   },
   postcode: {
     width: 0.78 * width
   },
   iconContainer: {
     width: 0.12 * width,
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   icon: {
     width: 0.08 * width,
@@ -88,5 +97,8 @@ const styles = StyleSheet.create({
     textAlign: 'left',
     padding: 0.025 * width,
     fontSize: 20,
+  },
+  pickerContainer: {
+    marginTop: 0.5 * height
   }
 });

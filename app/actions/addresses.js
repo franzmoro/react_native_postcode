@@ -1,6 +1,8 @@
+import dismissKeyboard from 'react-native/Libraries/Utilities/dismissKeyboard';
 import {
   SET_ADDRESS_OPTIONS,
-  DISPLAY_PICKER
+  DISPLAY_PICKER,
+  CLEAR_ADDRESS_LINES
 } from '../action_types.js';
 const {
   mapAddressStrToObj,
@@ -10,7 +12,12 @@ const {
 module.exports = ({ reactModules: { alert } }) => ({
   getAddresses: () => (dispatch, getState) => {
     const postcode = getState().getIn(['form', 'postcode']);
-    const apiKey = '0wnu1gfv3kW5P--J02gZoA6253';
+    if (!postcode) {
+      throw new Error('postcode cannot be undefined');
+    }
+    dismissKeyboard();
+    dispatch({ type: CLEAR_ADDRESS_LINES });
+    const apiKey = 'svmmX8qdGkms9--Jwlzl5w3660';
     const url = [
       'https://api.getaddress.io/v2/uk/', postcode, '?api-key=', apiKey
     ].join('');
@@ -18,7 +25,6 @@ module.exports = ({ reactModules: { alert } }) => ({
     fetch(url)
     .then(res => res.json())
     .then(json => {
-      console.log('json', json);
       if (json.Message) {
         let alertTitleMessage;
         if (json.Message === 'Too Many Requests') {
@@ -40,6 +46,7 @@ module.exports = ({ reactModules: { alert } }) => ({
         return;
       }
       const results = json.Addresses;
+      console.log('results', results);
       dispatch({
         type: SET_ADDRESS_OPTIONS,
         results: {

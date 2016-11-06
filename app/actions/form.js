@@ -19,5 +19,6 @@ module.exports = ({ reactModules }) => ({
     });
     dispatch({ type: DISPLAY_PICKER, boolean: true });
     dispatch({ type: CLEAR_ADDRESS_OPTIONS });
-  }
+  },
+  hidePicker: () => ({ type: DISPLAY_PICKER, boolean: false })
 });

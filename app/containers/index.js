@@ -19,7 +19,7 @@ const mapStateToProps = state => {
     selectedAddress: address,
     rawOptions: raw,
     parsedOptions: parsed,
-    showPicker
+    shouldShowPicker: showPicker
   };
 };
 
