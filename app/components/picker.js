@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import {
   Picker,
-  StyleSheet,
-  Dimensions
+  StyleSheet
 } from 'react-native';
-import dismissKeyboard from 'react-native/Libraries/Utilities/dismissKeyboard';
 
 const { Item } = Picker;
 
@@ -21,7 +19,6 @@ class PickerComponent extends Component {
 
     return (
       <Picker
-        style = { styles.pickerContainer}
         selectedValue = { selectedAddress }
         onValueChange = { selectAddress }
         >
@@ -38,10 +35,5 @@ class PickerComponent extends Component {
     );
   }
 }
-const styles = StyleSheet.create({
-  // pickerContainer: {
-  //   border:
-  // }
-});
 
 module.exports = PickerComponent;

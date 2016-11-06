@@ -34,7 +34,7 @@ module.exports = ({ reactModules: { alert } }) => ({
               'The free API key does not support this many requests.',
               'Please try again later'
             ].join('')
-          ]
+          ];
         } else {
           alertTitleMessage = [
             'Address Not Found',

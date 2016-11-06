@@ -6,7 +6,7 @@ import {
   DISPLAY_PICKER
 } from '../action_types.js';
 
-module.exports = ({ reactModules }) => ({
+module.exports = () => ({
   changePostcodeInput: (postcode) => ({
     type: CHANGE_POSTCODE_INPUT,
     input: postcode
