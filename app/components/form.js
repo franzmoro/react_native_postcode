@@ -15,9 +15,11 @@ const { search: searchIcon } = require('../assets/_icons.js');
 module.exports = ({
   changePostcodeInput,
   getAddresses,
+  selectAddress,
   postcode,
-  addressOptions,
-  selectedAddress
+  rawOptions,
+  selectedAddress,
+  showPicker
 }) =>
   <View style={ styles.form }>
     <View style={ styles.inputContainer }>
@@ -40,6 +42,8 @@ module.exports = ({
         </TouchableOpacity>
       }
     </View>
+    { showPicker && <Picker {...{ rawOptions, selectAddress }} />
+    }
     {
       Object.keys(selectedAddress).map(field =>
         Boolean(selectedAddress[field]) &&

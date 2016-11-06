@@ -8,13 +8,18 @@ const { InputForm: InputFormComponent } = require('../components/index.js');
 const mapStateToProps = state => {
   const {
     form: { postcode, address },
-    addresses: { options }
+    addresses: {
+      options: { parsed, raw },
+      showPicker
+    }
   } = state.toJS();
 
   return {
     postcode,
     selectedAddress: address,
-    addressOptions: options
+    rawOptions: raw,
+    parsedOptions: parsed,
+    showPicker
   };
 };
 

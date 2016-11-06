@@ -1,3 +1,4 @@
 module.exports = ({
-  InputForm: require('./form.js')
+  InputForm: require('./form.js'),
+  Picker: require('./picker.js')
 });

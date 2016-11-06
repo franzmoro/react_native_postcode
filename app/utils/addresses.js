@@ -20,4 +20,8 @@ const mapAddressStrToObj = addressString => addressString
     {}
 );
 
-module.exports = { addressFields, emptyAddressFields, mapAddressStrToObj };
+const renderRawAddress = str => str.split(', ').filter(elm => elm).join(' ');
+
+module.exports = {
+  addressFields, emptyAddressFields, mapAddressStrToObj, renderRawAddress
+};

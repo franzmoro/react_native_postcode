@@ -1,7 +1,11 @@
 import {
-  SET_ADDRESS_OPTIONS
+  SET_ADDRESS_OPTIONS,
+  DISPLAY_PICKER
 } from '../action_types.js';
-const { mapAddressStrToObj } = require('../utils/addresses.js');
+const {
+  mapAddressStrToObj,
+  renderRawAddress
+} = require('../utils/addresses.js');
 
 module.exports = ({ reactModules: { alert } }) => ({
   getAddresses: () => (dispatch, getState) => {
@@ -14,16 +18,38 @@ module.exports = ({ reactModules: { alert } }) => ({
     fetch(url)
     .then(res => res.json())
     .then(json => {
+      console.log('json', json);
       if (json.Message) {
-        alert(
-          'Address Not Found',
-          'Please check your postcode and try again!'
-        );
+        let alertTitleMessage;
+        if (json.Message === 'Too Many Requests') {
+          alertTitleMessage = [
+            'Sorry!',
+            [
+              'The free API key does not support this many requests.',
+              'Please try again later'
+            ].join('')
+          ]
+        } else {
+          alertTitleMessage = [
+            'Address Not Found',
+            'Please check your postcode and try again!'
+          ];
+        }
+        console.log('alert', alert);
+        dispatch(alert(...alertTitleMessage));
         return;
       }
+      const results = json.Addresses;
       dispatch({
         type: SET_ADDRESS_OPTIONS,
-        results: json.Addresses.map(mapAddressStrToObj)
+        results: {
+          parsed: results.map(mapAddressStrToObj),
+          raw: results.map(renderRawAddress)
+        }
+      });
+      dispatch({
+        type: DISPLAY_PICKER,
+        boolean: true
       });
     })
     .catch(err => {
