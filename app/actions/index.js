@@ -1,5 +1,6 @@
 module.exports = ({ reactModules }) => {
   return {
-    addresses: require('./addresses.js')(reactModules),
+    ...require('./addresses.js')({ reactModules }),
+    ...require('./form.js')({ reactModules })
   };
 };

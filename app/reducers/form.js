@@ -5,17 +5,11 @@ import {
   CLEAR_ALL_INPUTS
 } from '../action_types.js';
 
+const { emptyAddressFields } = require('../utils/addresses.js');
+
 const initialState = fromJS({
   postcode: '',
-  address: {
-    line1: '',
-    line2: '',
-    line3: '',
-    line4: '',
-    locality: '',
-    city: '',
-    county: ''
-  }
+  address: emptyAddressFields
 });
 
 module.exports = (state = initialState, action) => {

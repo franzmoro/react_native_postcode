@@ -1,17 +1,17 @@
 import { fromJS } from 'immutable';
 import {
-  GET_ADDRESSES_FOR_POSTCODE,
+  SET_ADDRESS_OPTIONS,
   CLEAR_ADDRESS_OPTIONS
 } from '../action_types.js';
 
 const initialState = fromJS({
-  options: undefined
+  options: []
 });
 
 module.exports = (state = initialState, action) => {
   switch (action.type) {
-    case GET_ADDRESSES_FOR_POSTCODE:
-      return state.set('addressOptions', action.results);
+    case SET_ADDRESS_OPTIONS:
+      return state.set('options', action.results);
     case CLEAR_ADDRESS_OPTIONS:
       return initialState;
     default:
