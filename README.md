@@ -9,7 +9,7 @@ A mobile app for Android and iOS devices that aids completion of input forms for
 
 ## Technical Choices
 
-#### Front End
+### Front End
 - The app is built with **[React Native](https://facebook.github.io/react-native/)**
 - The app state is managed with **[Redux](https://redux.js.org)**, and uses the following middleware:
   - **[redux-thunk](https://github.com/gaearon/redux-thunk)**
@@ -19,10 +19,21 @@ A mobile app for Android and iOS devices that aids completion of input forms for
 - The list of addresses matching the postcode is provided by the **[getAddress](https://getaddress.io/)** api. For the sake of this exercise,  the (free) api key has not been concealed. This could have been achieved either with a ```.env``` file on the back-end, or using the native modules.
 - internal modules exported with ```module.exports``` and imported via ```require```, whereas external modules are imported via ```import```.
 
-#### Back End
+### Back End
 - No backend is needed / foreseen
 
-#### Tests
+### Tests
 Composed of:
 - Redux actions unit tests with **[tape](https://github.com/substack/tape)**
 - Integration tests with **[Appium](appium.io)**
+
+### How to run the app
+- ```npm start```, which runs react-native packager
+
+#### iOS
+- ```react-native run-ios```
+
+#### Android
+- Make sure you have an emulator / android virtual device configured
+- Run the emulator with ```emulator -avd <emulator-name>```
+- ```react-native run-android```
