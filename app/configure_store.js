@@ -21,6 +21,6 @@ module.exports = ({ actions, reducers }) => {
   )(createStore);
 
   const store = finalCreateStore(reducers);
-  // TODO dispatch a clear state action (TBC)
+
   return store;
 };

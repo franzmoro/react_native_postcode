@@ -27,7 +27,7 @@ Composed of:
 - Redux actions unit tests with **[tape](https://github.com/substack/tape)**
 - Integration tests with **[Appium](appium.io)**
 
-### How to run the app
+## How to run the app
 - ```npm start```, which runs react-native packager
 
 #### iOS
