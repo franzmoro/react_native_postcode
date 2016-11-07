@@ -34,7 +34,8 @@ const FormInputComponent = ({
         onFocus: hidePicker,
         placeholder: 'UK POSTCODE',
         value: postcode,
-        style: [ styles.textInput, styles.postcode ]
+        style: [ styles.textInput, styles.postcode ],
+        testID: 'Input'
       }} />
       { Boolean(postcode) &&
         <TouchableOpacity {...{
