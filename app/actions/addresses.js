@@ -1,4 +1,3 @@
-import dismissKeyboard from 'react-native/Libraries/Utilities/dismissKeyboard';
 import {
   SET_ADDRESS_OPTIONS,
   DISPLAY_PICKER,
@@ -9,13 +8,13 @@ const {
   renderRawAddress
 } = require('../utils/addresses.js');
 
-module.exports = ({ reactModules: { alert } }) => ({
+module.exports = ({ reactModules: { alert, dismissKeyBoard } }) => ({
   getAddresses: () => (dispatch, getState) => {
     const postcode = getState().getIn(['form', 'postcode']);
     if (!postcode) {
       throw new Error('postcode cannot be undefined');
     }
-    dismissKeyboard();
+    dismissKeyBoard();
     dispatch({ type: CLEAR_ADDRESS_LINES });
     const apiKey = 'svmmX8qdGkms9--Jwlzl5w3660';
     const url = [
@@ -26,27 +25,13 @@ module.exports = ({ reactModules: { alert } }) => ({
     .then(res => res.json())
     .then(json => {
       if (json.Message) {
-        let alertTitleMessage;
-        if (json.Message === 'Too Many Requests') {
-          alertTitleMessage = [
-            'Sorry!',
-            [
-              'The free API key does not support this many requests.',
-              'Please try again later'
-            ].join('')
-          ];
-        } else {
-          alertTitleMessage = [
-            'Address Not Found',
-            'Please check your postcode and try again!'
-          ];
-        }
-        console.log('alert', alert);
-        dispatch(alert(...alertTitleMessage));
+        alert.alert(
+          'Address Not Found',
+          'Please check your postcode and try again!'
+        );
         return;
       }
       const results = json.Addresses;
-      console.log('results', results);
       dispatch({
         type: SET_ADDRESS_OPTIONS,
         results: {
@@ -60,6 +45,7 @@ module.exports = ({ reactModules: { alert } }) => ({
       });
     })
     .catch(err => {
+      // TODO implement global error handling with rollbar (https://rollbar.com/)
       console.log('error', err);
     });
   }
