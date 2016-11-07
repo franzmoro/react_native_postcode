@@ -6,10 +6,10 @@ cache:
 install:
 - travis_wait 30 npm install -d --silent
 script:
-- travis_wait 80 npm run travis
+- travis_wait 80 npm run test
 env:
   global:
-  - APPNAME="ReactNativeTests"
+  - APPNAME="inmotion_postcode"
   - IOS_VERSION="10.0"
   - DEVICE_NAME="iPhone 7"
 branches:
