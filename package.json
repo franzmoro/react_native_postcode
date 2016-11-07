@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "test": "jest",
+    "test": "node ./test/e2e/index.test.js",
+    "test:cov": "babel-node ./node_modules/.bin/babel-istanbul cover tape ./test/unit/index.test.js && open coverage/lcov-report/index.html",
     "p:s": "npm cache clean && watchman watch-del-all && node_modules/react-native/packager/packager.sh --resetCache",
     "o:ios": "open ios/inmotion_postcode.xcodeproj",
     "o:android": "open android/app/src/main/java/com/inmotion_postcode/MainActivity.java"
