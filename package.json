@@ -22,7 +22,10 @@
     "preset": "jest-react-native"
   },
   "devDependencies": {
+    "appium": "1.6.0",
+    "babel-cli": "^6.18.0",
     "babel-eslint": "^7.1.0",
+    "babel-istanbul": "^0.11.0",
     "babel-jest": "16.0.0",
     "babel-preset-react-native": "1.9.0",
     "eslint": "^3.9.1",
@@ -30,9 +33,15 @@
     "eslint-plugin-react": "^6.5.0",
     "eslint-plugin-react-native": "^2.0.0",
     "flow-bin": "^0.34.0",
+    "isomorphic-fetch": "^2.2.1",
+    "istanbul": "^0.4.5",
     "jest": "16.0.2",
     "jest-react-native": "16.1.0",
+    "nock": "^9.0.2",
     "react-test-renderer": "15.3.2",
-    "redux-logger": "^2.7.4"
+    "redux-logger": "^2.7.4",
+    "sync-flow": "^1.0.0",
+    "tape": "^4.6.2",
+    "wd": "^1.0.0"
   }
 }
