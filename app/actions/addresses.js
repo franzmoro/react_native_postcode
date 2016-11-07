@@ -45,8 +45,8 @@ module.exports = ({ reactModules: { alert, dismissKeyBoard } }) => ({
       });
     })
     .catch(err => {
-      // TODO implement global error handling with rollbar (https://rollbar.com/)
-      console.log('error', err);
+      // TODO implement global error handling with rollbar (https://rollbar.com/w)
+      console.log('error', err); // eslint-disable-line
     });
   }
 

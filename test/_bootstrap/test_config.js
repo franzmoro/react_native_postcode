@@ -1,5 +1,4 @@
 'use strict';
-/* @flow */
 
 process.env.IOS_VERSION = process.env.IOS_VERSION || '9.3';
 process.env.DEVICE_NAME = process.env.DEVICE_NAME || 'iPhone 6s';

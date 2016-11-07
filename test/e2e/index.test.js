@@ -1,5 +1,4 @@
 'use strict';
-/* @flow */
 
 const fs = require('fs');
 const test = require('tape');
