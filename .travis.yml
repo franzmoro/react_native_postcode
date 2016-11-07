@@ -1,0 +1,18 @@
+language: objective-c
+osx_image: xcode8
+cache:
+  directories:
+  - node_modules
+install:
+- travis_wait 30 npm install -d --silent
+script:
+- travis_wait 80 npm run travis
+env:
+  global:
+  - APPNAME="ReactNativeTests"
+  - IOS_VERSION="10.0"
+  - DEVICE_NAME="iPhone 7"
+branches:
+  only:
+  - master
+  - release
