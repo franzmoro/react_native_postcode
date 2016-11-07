@@ -1,0 +1,21 @@
+{
+  "addresses": {
+    "options": {
+      "parsed": [],
+      "raw": []
+    },
+    "showPicker": false
+  },
+  "form": {
+    "address": {
+      "city": "",
+      "county": "",
+      "line1": "",
+      "line2": "",
+      "line3": "",
+      "line4": "",
+      "locality": ""
+    },
+    "postcode": ""
+  }
+}
