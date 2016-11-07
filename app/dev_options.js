@@ -1,6 +1,6 @@
 module.exports = {
   loggerOptions: {
-    active: true,
+    active: false,
     // level: (action) => console.log(`actionName:${action.type}`)
   }
 };
