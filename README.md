@@ -1,5 +1,5 @@
-# InMotion Postcode App
-A mobile app for Android and iOS devices that aids completion of input forms for physical addresses.
+# React Native Postcode App
+A simple mobile app for Android and iOS devices that aids completion of input forms for physical addresses.
 
 ## User flow
 - User inputs a post code
